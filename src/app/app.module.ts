@@ -11,6 +11,7 @@ import { RegistrarTratamientoComponent } from './registrar-tratamiento/registrar
 import { RegistrarMedicamentoComponent } from './registrar-medicamento/registrar-medicamento.component';
 import { RegistrarEmpleadoComponent } from './registrar-empleado/registrar-empleado.component';
 import { RegistrarConsultorioComponent } from './registrar-consultorio/registrar-consultorio.component';
+import { MapaNavegacionComponent } from './mapa-navegacion/mapa-navegacion.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { RegistrarConsultorioComponent } from './registrar-consultorio/registrar
     RegistrarTratamientoComponent,
     RegistrarMedicamentoComponent,
     RegistrarEmpleadoComponent,
-    RegistrarConsultorioComponent
+    RegistrarConsultorioComponent,
+    MapaNavegacionComponent
   ],
   imports: [
     BrowserModule,

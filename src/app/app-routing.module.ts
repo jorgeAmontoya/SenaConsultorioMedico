@@ -8,6 +8,7 @@ import { RegistrarTratamientoComponent } from './registrar-tratamiento/registrar
 import { RegistrarMedicamentoComponent } from './registrar-medicamento/registrar-medicamento.component';
 import { RegistrarEmpleadoComponent } from './registrar-empleado/registrar-empleado.component';
 import { RegistrarConsultorioComponent } from './registrar-consultorio/registrar-consultorio.component';
+import { MapaNavegacionComponent } from './mapa-navegacion/mapa-navegacion.component';
 
 const routes: Routes = [
   {path: 'registrar-paciente', component: RegistrarPacienteComponent},
@@ -18,13 +19,8 @@ const routes: Routes = [
   {path: 'registrar-tratamiento', component: RegistrarTratamientoComponent},
   {path: 'registrar-medicamento', component: RegistrarMedicamentoComponent},
   {path: 'registrar-empleado', component: RegistrarEmpleadoComponent},
-  {path: 'registrar-consultorio', component: RegistrarConsultorioComponent}
-
-
-
-
-
-
+  {path: 'registrar-consultorio', component: RegistrarConsultorioComponent},
+  {path: 'mapa-navegacion', component: MapaNavegacionComponent}
 ];
 
 @NgModule({
