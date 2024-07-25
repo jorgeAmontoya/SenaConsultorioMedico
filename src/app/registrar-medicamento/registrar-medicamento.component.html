@@ -1,32 +1,32 @@
 <div class="container">
-    <div class="card border-primary mb-3">
+    <div>
       <div class="container text-center" style="margin: 5px">
         <h2>Registrar medicamento</h2>
       </div>
-            <form >
+            <form (ngSubmit)="onSubmit()">
                 <div class="row">
                     <div class="col">
                       <div class="mb-1">
-                        <label for="description" class="form-label">Nombre medicamento</label>
-                        <input type="text" class="form-control" id="description" name="description" required="true">
+                        <label for="description" class="form-label">Referencia</label>
+                        <input type="text" class="form-control" id="referencia" name="referencia" required="true" [(ngModel)]="medicamento.referencia">
                     </div> 
                     <div class="mb-1">
-                        <label for="existencia" class="form-label">Fecha vencimiento</label>
-                        <input type="email" class="form-control" id="existencia" name="existencia">
+                        <label for="existencia" class="form-label">Nombre medicamento</label>
+                        <input type="email" class="form-control" id="nombreMedicamento" name="nombreMedicamento" [(ngModel)]="medicamento.nombre">
                     </div>
                     <div class="mb-1">
-                        <label for="existencia" class="form-label">Observaciones</label>
-                        <input type="text" class="form-control" id="existencia" name="existencia">
+                        <label for="existencia" class="form-label">fecha Vencimiento</label>
+                        <input type="text" class="form-control" id="fechaVencimiento" name="fechaVencimiento" [(ngModel)]="medicamento.fechaVencimiento">
                       </div>
                     </div>
                     <div class="col">
                         <div class="mb-1">
                             <label for="existencia" class="form-label">Cantidad </label>
-                            <input type="text" class="form-control" id="existencia" name="existencia">
+                            <input type="text" class="form-control" id="cantidad" name="cantidad" [(ngModel)]="medicamento.cantidad">
                           </div>
                           <div class="mb-1">
-                            <label for="existencia" class="form-label">Embalaje </label>
-                            <input type="number" class="form-control" id="existencia" name="existencia">
+                            <label for="existencia" class="form-label">Empleado </label>
+                            <input type="number" class="form-control" id="empleado" name="empleado" [(ngModel)]="medicamento.empleadoCedula">
                           </div>    
                     </div>
                 </div>          
@@ -42,47 +42,26 @@
     <table class="table table-striped table-hover align-middle border-primary">
         <thead class="table-dark">
           <tr>
-            <th scope="col">Código</th>
-            <th scope="col">medicamento</th>
-            <th scope="col">Cantidad </th>
-            <th scope="col">Caducidad</th>
-            <th scope="col">Embalaje</th>
-            <th scope="col">Observación</th>
-            <th scope="col">Acciones</th>
+            <th scope="col">Referencia</th>
+            <th scope="col">Nombre medicamento</th>
+            <th scope="col">fecha Vencimiento </th>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Empleado</th>
             <th></th>
           </tr>
         </thead>
         <tbody>
-          <tr >
-            <th scope="row">000001</th>
-            <td>Acetaminofen</td>
-            <td>108</td>
-            <td>22/06/2024</td>
-            <td>cajas</td>
-            <td>Conservar en lugar seco</td>
-
+          <tr *ngFor="let medicamento of medicamentos">
+            <th scope="row">{{medicamento.referencia}}</th>
+            <td>{{medicamento.nombre}}</td>
+            <td>{{medicamento.fechaVencimiento}}</td>
+            <td>{{medicamento.cantidad}}</td>
+            <td>{{medicamento.empleadoCedula}}</td>
             <td class="text-center">
               <div>
                 <button  
                 class="btn btn-warning btn-sm me-3">Editar</button>
-                <button 
-                class="btn btn-danger btn-sm">Eliminar</button>
-              </div>
-            </td>
-          </tr>
-          <tr >
-            <th scope="row">000002</th>
-            <td>Loratadina</td>
-            <td>78</td>
-            <td>22/06/2024</td>
-            <td>cajas</td>
-            <td>Conservar en lugar seco</td>
-
-            <td class="text-center">
-              <div>
-                <button  
-                class="btn btn-warning btn-sm me-3">Editar</button>
-                <button 
+                <button (click)="eliminarMedicamento(medicamento.referencia)"
                 class="btn btn-danger btn-sm">Eliminar</button>
               </div>
             </td>

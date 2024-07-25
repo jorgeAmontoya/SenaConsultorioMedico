@@ -3,38 +3,35 @@
       <div class="container text-center" style="margin: 5px">
         <h2>Registrar pacientes</h2>
       </div>
-      <form >
+      <form (ngSubmit)="onSubmit()">
         <div class="row">
             <div class="col">
               <div class="mb-1">
-                <label for="description" class="form-label">Nombre</label>
-                <input type="text" class="form-control" id="description" name="description" required="true">
+                <label for="description" class="form-label">Nombres</label>
+                <input type="text" class="form-control" id="nombre" name="nombre" required="true" [(ngModel)]="paciente.nombres">
+                
             </div> 
             <div class="mb-1">
                 <label for="existencia" class="form-label">Número de documento</label>
-                <input type="text" class="form-control" id="existencia" name="existencia">
+                <input type="number" class="form-control" id="numeroDocumento" name="numeroDocumento" [(ngModel)]="paciente.cedula">
               </div>
               <div class="mb-1">
-                <label for="existencia" class="form-label">Dirección </label>
-                <input type="text" class="form-control" id="existencia" name="existencia">
+                <label for="existencia" class="form-label">Teléfono </label>
+                <input type="text" class="form-control" id="telefono" name="telefono" [(ngModel)]="paciente.telefono">
               </div>
-              <div class="mb-1">
-                <label for="existencia" class="form-label">Teléfono</label>
-                <input type="text" class="form-control" id="existencia" name="existencia">
-            </div>
             </div>
             <div class="col">
                 <div class="mb-1">
-                    <label for="existencia" class="form-label">RH</label>
-                    <input type="text" class="form-control" id="existencia" name="existencia">
+                    <label for="existencia" class="form-label">Apellidos</label>
+                    <input type="text" class="form-control" id="apellidos" name="apellidos" [(ngModel)]="paciente.apellidos">
                   </div>
                   <div class="mb-1">
                     <label for="existencia" class="form-label">Sexo</label>
-                    <input type="tel" class="form-control" id="existencia" name="existencia">
+                    <input type="tel" class="form-control" id="sexo" name="sexo">
                   </div>
                   <div class="mb-1">
                     <label for="existencia" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="existencia" name="existencia">
+                    <input type="email" class="form-control" id="email" name="email" [(ngModel)]="paciente.email">
                   </div>
             </div>
         </div>          
@@ -52,44 +49,26 @@
         <tr>
           <th scope="col">Id</th>
           <th scope="col">nombre</th>
+          <th scope="col">Apellido</th>
           <th scope="col">cedula </th>
           <th scope="col">telefóno</th>
-          <th scope="col">RH</th>
-          <th scope="col">Dirección</th>
+          <th scope="col">Email</th>
           <th></th>
         </tr>
       </thead>
       <tbody>
-        <tr >
+        <tr *ngFor="let paciente of pacientes">
           <th scope="row">1</th>
-          <td>Jorge Montoya</td>
-          <td>109495</td>
-          <td>320745</td>
-          <td>A+</td>
-          <td>calle 123</td>
-
+          <td>{{paciente.nombres}}</td>
+          <td>{{paciente.apellidos}}</td>
+          <td>{{paciente.cedula}}</td>
+          <td>{{paciente.telefono}}</td>
+          <td>{{paciente.email}}</td>
           <td class="text-center">
             <div>
               <button  
               class="btn btn-warning btn-sm me-3">Editar</button>
-              <button 
-              class="btn btn-danger btn-sm">Eliminar</button>
-            </div>
-          </td>
-        </tr>
-        <tr >
-          <th scope="row">1</th>
-          <td>Liz Orjuela</td>
-          <td>10122</td>
-          <td>32157</td>
-          <td>A+</td>
-          <td>calle 555</td>
-
-          <td class="text-center">
-            <div>
-              <button  
-              class="btn btn-warning btn-sm me-3">Editar</button>
-              <button 
+              <button (click)="eliminarPacientes(paciente.cedula)"
               class="btn btn-danger btn-sm">Eliminar</button>
             </div>
           </td>

@@ -3,42 +3,34 @@
       <div class="container text-center" style="margin: 5px">
         <h2>Registrar médico</h2>
       </div>
-            <form >
+            <form (ngSubmit)="onSubmit()">
                 <div class="row">
                     <div class="col">
                       <div class="mb-1">
                         <label for="description" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" id="description" name="description" required="true">
+                        <input type="text" class="form-control" id="nombre" name="nombre" required="true" [(ngModel)]="medico.nombres">
                     </div> 
                     <div class="mb-1">
-                        <label for="existencia" class="form-label">Dirección</label>
-                        <input type="text" class="form-control" id="existencia" name="existencia">
-                      </div>
-                      <div class="mb-1">
-                        <label for="existencia" class="form-label">Sexo</label>
-                        <input type="text" class="form-control" id="existencia" name="existencia">
+                        <label for="existencia" class="form-label">cedula</label>
+                        <input type="text" class="form-control" id="cedula" name="cedula" [(ngModel)]="medico.cedula">
                       </div>
                       <div class="mb-1">
                         <label for="existencia" class="form-label">Especialidad</label>
-                        <input type="email" class="form-control" id="existencia" name="existencia">
+                        <input type="text" class="form-control" id="especialidad" name="especialidad" [(ngModel)]="medico.especialidad">
                     </div>
                     </div>
                     <div class="col">
                         <div class="mb-1">
-                            <label for="existencia" class="form-label">Dirección</label>
-                            <input type="text" class="form-control" id="existencia" name="existencia">
+                            <label for="existencia" class="form-label">Apellidos</label>
+                            <input type="text" class="form-control" id="apellido" name="apellido" [(ngModel)]="medico.apellidos">
                           </div>
                           <div class="mb-1">
                             <label for="existencia" class="form-label">Teléfono</label>
-                            <input type="tel" class="form-control" id="existencia" name="existencia">
-                          </div>
-                          <div class="mb-1">
-                            <label for="existencia" class="form-label">RH</label>
-                            <input type="text" class="form-control" id="existencia" name="existencia">
+                            <input type="tel" class="form-control" id="telefono" name="telefono" [(ngModel)]="medico.telefono">
                           </div>
                           <div class="mb-1">
                             <label for="existencia" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="existencia" name="existencia">
+                            <input type="email" class="form-control" id="email" name="email" [(ngModel)]="medico.email">
                           </div>
                     </div>
                 </div>          
@@ -49,51 +41,36 @@
             </form>
     </div>    
     <div class="container text-center" style="margin: 30px;">
-      <h3>Pacientes registrados</h3>
+      <h3>Medicos registrados</h3>
   </div>  
     <table class="table table-striped table-hover align-middle">
       <thead class="table-dark">
         <tr>
           <th scope="col">Id</th>
           <th scope="col">nombre</th>
+          <th scope="col">Apellido</th>
           <th scope="col">cedula </th>
           <th scope="col">telefóno</th>
           <th scope="col">especialidad</th>
-          <th scope="col">consultorio</th>
+          <th scope="col">email</th>
           <th></th>
         </tr>
       </thead>
       <tbody>
-        <tr >
+        <tr *ngFor="let medico of medicos">
           <th scope="row">1</th>
-          <td>Heyler Montoya</td>
-          <td>109495865</td>
-          <td>31132290</td>
-          <td>Cardiologia</td>
-          <td>8</td>
+          <td>{{medico.nombres}}</td>
+          <td>{{medico.apellidos}}</td>
+          <td>{{medico.cedula}}</td>
+          <td>{{medico.telefono}}</td>
+          <td>{{medico.especialidad}}</td>
+          <td>{{medico.email}}</td>
 
           <td class="text-center">
             <div>
               <button  
               class="btn btn-warning btn-sm me-3">Editar</button>
-              <button 
-              class="btn btn-danger btn-sm">Eliminar</button>
-            </div>
-          </td>
-        </tr>
-        <tr >
-          <th scope="row">1</th>
-          <td>Karen reyes</td>
-          <td>1589874</td>
-          <td>310833</td>
-          <td>Pediatria</td>
-          <td>7</td>
-
-          <td class="text-center">
-            <div>
-              <button  
-              class="btn btn-warning btn-sm me-3">Editar</button>
-              <button 
+              <button (click)="eliminarMedicos(medico.cedula)"
               class="btn btn-danger btn-sm">Eliminar</button>
             </div>
           </td>

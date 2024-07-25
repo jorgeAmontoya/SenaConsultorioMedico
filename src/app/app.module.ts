@@ -12,6 +12,8 @@ import { RegistrarMedicamentoComponent } from './registrar-medicamento/registrar
 import { RegistrarEmpleadoComponent } from './registrar-empleado/registrar-empleado.component';
 import { RegistrarConsultorioComponent } from './registrar-consultorio/registrar-consultorio.component';
 import { MapaNavegacionComponent } from './mapa-navegacion/mapa-navegacion.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { MapaNavegacionComponent } from './mapa-navegacion/mapa-navegacion.compo
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    HttpClientModule,
+    AppRoutingModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

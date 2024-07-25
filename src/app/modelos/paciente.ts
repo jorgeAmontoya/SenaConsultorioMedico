@@ -1,6 +1,8 @@
 export class Paciente {
-    nombre: string;
+    nombres: string;
+    apellidos: string;
     cedula: number;
     direcion: string;
     telefono: number
+    email:string;
 }

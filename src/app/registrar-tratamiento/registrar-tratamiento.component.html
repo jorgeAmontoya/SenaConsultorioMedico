@@ -3,36 +3,36 @@
       <div class="container text-center" style="margin: 5px">
         <h2>Registrar tratamiento</h2>
       </div>
-            <form >
+            <form (ngSubmit)="onSubmit()">
                 <div class="row">
                     <div class="col">
                       <div class="mb-1">
-                        <label for="description" class="form-label">Tipo documento</label>
-                        <input type="text" class="form-control" id="description" name="description" required="true">
+                        <label for="description" class="form-label">Id Tratamiento</label>
+                        <input type="text" class="form-control" id="idTratamiento" name="idTratamiento" required="true" [(ngModel)]="tratamiento.idTratamiento">
                     </div> 
                 
                       <div class="mb-1">
-                        <label for="existencia" class="form-label">N° de historia clinica </label>
-                        <input type="text" class="form-control" id="existencia" name="existencia">
+                        <label for="existencia" class="form-label">Cedula Paciente</label>
+                        <input type="text" class="form-control" id="cedulaPaciente" name="cedulaPaciente" [(ngModel)]="tratamiento.cedulaPaciente">
                       </div>
                       <div class="mb-1">
-                        <label for="existencia" class="form-label">Cantidad </label>
-                        <input type="number" class="form-control" id="existencia" name="existencia">
+                        <label for="existencia" class="form-label">Medico </label>
+                        <input type="number" class="form-control" id="medico" name="medico" [(ngModel)]="tratamiento.idMedico">
                       </div>
                       
                     </div>
                     <div class="col">
                         <div class="mb-1">
-                            <label for="existencia" class="form-label">Número de documento</label>
-                            <input type="text" class="form-control" id="existencia" name="existencia">
+                            <label for="existencia" class="form-label">Medicamento</label>
+                            <input type="text" class="form-control" id="medicamento" name="medicamento" [(ngModel)]="tratamiento.medicamento">
                           </div>
                           <div class="mb-1">
-                            <label for="existencia" class="form-label">Medicamento</label>
-                            <input type="email" class="form-control" id="existencia" name="existencia">
+                            <label for="existencia" class="form-label">Observaciones</label>
+                            <input type="email" class="form-control" id="observaciones" name="observaciones" [(ngModel)]="tratamiento.observaciones">
                         </div>
                           <div class="mb-1">
-                            <label for="existencia" class="form-label">Observaciones</label>
-                            <input type="text" class="form-control" id="existencia" name="existencia">
+                            <label for="existencia" class="form-label">Referencia medicamento</label>
+                            <input type="text" class="form-control" id="referenciaMedicamente" name="referenciaMedicamente" [(ngModel)]="tratamiento.referenciaMedicamento">
                           </div>
                     </div>
                 </div>          
@@ -48,22 +48,23 @@
     <table class="table table-striped table-hover align-middle">
         <thead class="table-dark">
           <tr>
-            <th scope="col">Código</th>
-            <th scope="col">medicamento</th>
-            <th scope="col">Observación </th>
-            <th scope="col">Cantidad</th>
-            <th scope="col">Total</th>
-            <th scope="col">Acciones</th>
+            <th scope="col">Id</th>
+            <th scope="col">Paciente</th>
+            <th scope="col">Medico </th>
+            <th scope="col">Medicamento</th>
+            <th scope="col">Referencia</th>
+            <th scope="col">Observaciones</th>
             <th></th>
           </tr>
         </thead>
         <tbody>
-          <tr >
-            <th scope="row">000001</th>
-            <td>Acetaminofen</td>
-            <td>Cada 8 horas</td>
-            <td>5 Tabletas</td>
-            <td>7.000</td>
+          <tr *ngFor="let tratamiento of tratamientos">
+            <th scope="row">{{tratamiento.idTratamiento}}</th>
+            <td>{{tratamiento.cedulaPaciente}}</td>
+            <td>{{tratamiento.idMedico}}</td>
+            <td>{{tratamiento.medicamento}}</td>
+            <td>{{tratamiento.referenciaMedicamento}}</td>
+            <td>{{tratamiento.observaciones}}</td>
             <td class="text-center">
               <div>
                 <button  

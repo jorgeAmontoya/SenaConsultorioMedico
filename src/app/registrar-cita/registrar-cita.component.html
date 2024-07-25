@@ -3,42 +3,34 @@
       <div class="container text-center" style="margin: 5px">
         <h2>Registrar cita</h2>
       </div>
-            <form >
+            <form (ngSubmit)="onSubmit()">
                 <div class="row">
                     <div class="col">
                       <div class="mb-1">
-                        <label for="description" class="form-label">Tipo documento</label>
-                        <input type="text" class="form-control" id="description" name="description" required="true">
+                        <label for="description" class="form-label">Id Cita</label>
+                        <input type="text" class="form-control" id="idCita" name="idCita" required="true" [(ngModel)]="cita.idCita">
                     </div> 
                     <div class="mb-1">
-                        <label for="existencia" class="form-label">Número de documento</label>
-                        <input type="text" class="form-control" id="existencia" name="existencia">
+                        <label for="existencia" class="form-label">Cedula Paciente</label>
+                        <input type="text" class="form-control" id="cedulaPaciente" name="cedulaPaciente" [(ngModel)]="cita.cedulaPaciente">
                       </div>
                       <div class="mb-1">
-                        <label for="existencia" class="form-label">Tipo de cita </label>
-                        <input type="text" class="form-control" id="existencia" name="existencia">
+                        <label for="existencia" class="form-label">Id Tratamiento </label>
+                        <input type="text" class="form-control" id="idTratamiento" name="idTratamiento" [(ngModel)]="cita.idTratamiento">
                       </div>
-                      <div class="mb-1">
-                        <label for="existencia" class="form-label">Fecha cita</label>
-                        <input type="date" class="form-control" id="existencia" name="existencia">
-                    </div>
                     </div>
                     <div class="col">
                         <div class="mb-1">
-                            <label for="existencia" class="form-label">Hora</label>
-                            <input type="text" class="form-control" id="existencia" name="existencia">
+                            <label for="existencia" class="form-label">Cedula Medico</label>
+                            <input type="text" class="form-control" id="cedulaMedico" name="cedulaMedico" [(ngModel)]="cita.cedulaMedico">
                           </div>
                           <div class="mb-1">
-                            <label for="existencia" class="form-label">Teléfono</label>
-                            <input type="tel" class="form-control" id="existencia" name="existencia">
+                            <label for="existencia" class="form-label">Fecha</label>
+                            <input type="date" class="form-control" id="existencia" name="existencia" [(ngModel)]="cita.fecha">
                           </div>
                           <div class="mb-1">
-                            <label for="existencia" class="form-label">RH</label>
-                            <input type="text" class="form-control" id="existencia" name="existencia">
-                          </div>
-                          <div class="mb-1">
-                            <label for="existencia" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="existencia" name="existencia">
+                            <label for="existencia" class="form-label">Número Consultorio</label>
+                            <input type="text" class="form-control" id="numeroConsultorio" name="numeroConsultorio" [(ngModel)]="cita.numeroConsultorio">
                           </div>
                     </div>
                 </div>          
@@ -54,27 +46,29 @@
     <table class="table table-striped table-hover align-middle">
         <thead class="table-dark">
           <tr>
+            <th scope="col">Id Cita</th>
+            <th scope="col">Cedula Paciente</th>
+            <th scope="col">Cedula Medico </th>
+            <th scope="col">Id Tratamiento</th>
             <th scope="col">Fecha</th>
-            <th scope="col">Médico</th>
-            <th scope="col">Tipo cita </th>
-            <th scope="col">Examenes</th>
-            <th scope="col">Consultorio</th>
+            <th scope="col">Número Consultorio</th>
             <th scope="col">Acciones</th>
             <th></th>
           </tr>
         </thead>
         <tbody>
-          <tr >
-            <th scope="row">1 abril</th>
-            <td>Anderson Montoya</td>
-            <td>Cardiologia</td>
-            <td>No Aplia</td>
-            <td>N° 8</td>
+          <tr *ngFor="let cita of citas">
+            <th scope="row">{{cita.idCita}}</th>
+            <td>{{cita.cedulaPaciente}}</td>
+            <td>{{cita.cedulaMedico}}</td>
+            <td>{{cita.idTratamiento}}</td>
+            <td>{{cita.fecha}}</td>
+            <td>{{cita.numeroConsultorio}}</td>
             <td class="text-center">
               <div>
                 <button  
                 class="btn btn-warning btn-sm me-3">Editar</button>
-                <button 
+                <button (click)="eliminarCita(cita.idCita)"
                 class="btn btn-danger btn-sm">Eliminar</button>
               </div>
             </td>

@@ -3,30 +3,22 @@
       <div class="container text-center" style="margin: 5px">
         <h2>Registrar consultorio</h2>
       </div>
-            <form >
+            <form (ngSubmit)="onSubmit()">
                 <div class="row">
                     <div class="col">
                       <div class="mb-1">
-                        <label for="description" class="form-label">Nombre médico</label>
-                        <input type="text" class="form-control" id="description" name="description" required="true">
+                        <label for="NombreMedico" class="form-label">Número consultorio</label>
+                        <input type="number" class="form-control" id="numeroConsultorio" name="numeroConsultorio" required="true"  [(ngModel)]="consultorio.numeroConsultorio">
                     </div> 
                     <div class="mb-1">
-                        <label for="existencia" class="form-label">Especialidad</label>
-                        <input type="text" class="form-control" id="existencia" name="existencia">
-                      </div>
-                      <div class="mb-1">
-                        <label for="existencia" class="form-label">Dirección</label>
-                        <input type="text" class="form-control" id="existencia" name="existencia">
+                        <label for="especialidad" class="form-label">Especialidad</label>
+                        <input type="text" class="form-control" id="especialidad" name="especialidad"  [(ngModel)]="consultorio.especialidad">
                       </div>
                     </div>
                     <div class="col">
                         <div class="mb-1">
-                            <label for="existencia" class="form-label">Número consultorio</label>
-                            <input type="text" class="form-control" id="existencia" name="existencia">
-                          </div>
-                          <div class="mb-1">
-                            <label for="existencia" class="form-label">Teléfono</label>
-                            <input type="tel" class="form-control" id="existencia" name="existencia">
+                            <label for="numConsultorio" class="form-label">Médico asignado</label>
+                            <input type="text" class="form-control" id="medicoAsignado" name="medicoAsignado"  [(ngModel)]="consultorio.medicoAsignado">
                           </div>
                     </div>
                 </div>          
@@ -37,48 +29,27 @@
             </form>
     </div>    
     <div class="container text-center" style="margin: 30px;">
-      <h3>consultorios registrados</h3>
+      <h3>Consultorios registrados</h3>
   </div>  
     <table class="table table-striped table-hover align-middle">
       <thead class="table-dark">
         <tr>
-          <th scope="col">Consultorio</th>
+          <th scope="col">Número Consultorio</th>
           <th scope="col">medico asignado</th>
           <th scope="col">especialidad </th>
-          <th scope="col">telefóno</th>
-          <th scope="col">direccion</th>
           <th></th>
         </tr>
       </thead>
       <tbody>
-        <tr >
-          <th scope="row">1</th>
-          <td>Heyler Montoya</td>
-          <td>Cardiologia</td>
-          <td>31132290</td>
-          <td>calle 123</td>
-
+        <tr *ngFor="let consultorio of consultorios">
+          <th scope="row">{{consultorio.numeroConsultorio}}</th>
+          <td>{{consultorio.medicoAsignado}}</td>
+          <td>{{consultorio.especialidad}}</td>
           <td class="text-center">
             <div>
               <button  
               class="btn btn-warning btn-sm me-3">Editar</button>
-              <button 
-              class="btn btn-danger btn-sm">Eliminar</button>
-            </div>
-          </td>
-        </tr>
-        <tr >
-          <th scope="row">1</th>
-          <td>Karen reyes</td>
-          <td>Pediatria</td>
-          <td>310833</td>
-          <td>calle 555</td>
-
-          <td class="text-center">
-            <div>
-              <button  
-              class="btn btn-warning btn-sm me-3">Editar</button>
-              <button 
+              <button  (click)="eliminarConsultorios(consultorio.numeroConsultorio)"
               class="btn btn-danger btn-sm">Eliminar</button>
             </div>
           </td>
